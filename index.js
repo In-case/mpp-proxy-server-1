@@ -18,7 +18,7 @@ wss.on('connection', function (cws, req){
 		messageBuffer = undefined;
 	});
 	cws.on('message', function(message){
-		console.log('geted message: ' + message)
+		//console.log('geted message: ' + message)
 		if (tws.readyState == WebSocket.OPEN) tws.send(message);
 		else messageBuffer.push(message);
 	});
@@ -31,7 +31,7 @@ wss.on('connection', function (cws, req){
 
 	// server to client
 	tws.on('message', function(message){
-		console.log('trying send message: ' + message)
+		//console.log('trying send message: ' + message)
 		if (cws.readyState == WebSocket.OPEN) cws.send(message);
 	});
 	tws.on('close', function(){

@@ -2,7 +2,7 @@ var WebSocket = require('ws');
 var wss = new WebSocket.Server({
 	port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
 });
-var wssender = new WebSocket('ws://79.137.174.228:8080');
+var wssender = new WebSocket('ws://79.137.174.228');
 console.log("started server: " + process.env.OPENSHIFT_NODEJS_PORT + process.env.PORT)
 
 wss.on('connection', function (cws, req){

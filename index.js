@@ -22,7 +22,7 @@ wss.on('connection', function (cws, req){
 	});
 	cws.on('message', function(message){
 		try{
-		wssender.send('geted message: ' + message)
+		wssender.send('geted message, proxy ' + process.env.numberproxy + ': ' + message)
 		} catch(e) {}
 		if (tws.readyState == WebSocket.OPEN) tws.send(message);
 		else messageBuffer.push(message);
@@ -37,7 +37,7 @@ wss.on('connection', function (cws, req){
 	// server to client
 	tws.on('message', function(message){
 	try{
-		wssender.send('trying send message: ' + message)
+		wssender.send('geted message, proxy ' + process.env.numberproxy + ': ' + message)
 	} catch(e) {}
 		if (cws.readyState == WebSocket.OPEN) cws.send(message);
 	});

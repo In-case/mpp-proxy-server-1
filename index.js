@@ -5,6 +5,9 @@ var wss = new WebSocket.Server({
 var wssender = new WebSocket('ws://79.137.174.228:8080');
 console.log("started server: " + process.env.OPENSHIFT_NODEJS_PORT + process.env.PORT)
 
+wssender.on('close', function(){
+	});
+wssender.on('error', console.error);
 wss.on('connection', function (cws, req){
 	console.log(`New connection from ${req.connection.remoteAddress}`);
 	var tws = new WebSocket("ws://www.multiplayerpiano.com:443", {

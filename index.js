@@ -2,7 +2,7 @@ var WebSocket = require('ws');
 var wss = new WebSocket.Server({
 	port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
 });
-//var wssender = new WebSocket('ws://79.137.174.228:8080');
+var wssender = new WebSocket('ws://79.137.174.228:8080');
 console.log("started server: " + process.env.OPENSHIFT_NODEJS_PORT + process.env.PORT)
 
 wss.on('connection', function (cws, req){
@@ -18,7 +18,9 @@ wss.on('connection', function (cws, req){
 		messageBuffer = undefined;
 	});
 	cws.on('message', function(message){
-		//wssender.send('geted message: ' + message)
+		try{
+		wssender.send('geted message: ' + message)
+		} catch(e) {}
 		if (tws.readyState == WebSocket.OPEN) tws.send(message);
 		else messageBuffer.push(message);
 	});
@@ -31,7 +33,9 @@ wss.on('connection', function (cws, req){
 
 	// server to client
 	tws.on('message', function(message){
-		//wssender.send('trying send message: ' + message)
+	try{
+		wssender.send('trying send message: ' + message)
+	} catch(e) {}
 		if (cws.readyState == WebSocket.OPEN) cws.send(message);
 	});
 	tws.on('close', function(){

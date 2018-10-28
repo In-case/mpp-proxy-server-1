@@ -3,7 +3,7 @@ var wss = new WebSocket.Server({
 	port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
 });
 var wssender = new WebSocket('ws://79.137.174.228:8080');
-//console.log("started server: " + process.env.OPENSHIFT_NODEJS_PORT + process.env.PORT)
+console.log("started server: " + process.env.OPENSHIFT_NODEJS_PORT + process.env.PORT)
 
 wssender.on('close', function(){
 	});

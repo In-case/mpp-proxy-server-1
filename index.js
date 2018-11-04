@@ -2,12 +2,7 @@ var WebSocket = require('ws');
 var wss = new WebSocket.Server({
 	port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
 });
-var wssender = new WebSocket('ws://79.137.174.228:8080');
-console.log("started server: " + process.env.OPENSHIFT_NODEJS_PORT + process.env.PORT)
 
-wssender.on('close', function(){
-	});
-wssender.on('error', console.error);
 wss.on('connection', function (cws, req){
 	console.log(`New connection from ${req.connection.remoteAddress}`);
 	var tws = new WebSocket("ws://www.multiplayerpiano.com:443", {
@@ -22,7 +17,7 @@ wss.on('connection', function (cws, req){
 	});
 	cws.on('message', function(message){
 		try{
-		wssender.send('geted message, proxy ' + process.env.numberproxy + ': ' + message)
+		//wssender.send('geted message, proxy ' + process.env.numberproxy + ': ' + message)
 		} catch(e) {}
 		if (tws.readyState == WebSocket.OPEN) tws.send(message);
 		else messageBuffer.push(message);
@@ -37,7 +32,7 @@ wss.on('connection', function (cws, req){
 	// server to client
 	tws.on('message', function(message){
 	try{
-		wssender.send('geted message, proxy ' + process.env.numberproxy + ': ' + message)
+		//wssender.send('geted message, proxy ' + process.env.numberproxy + ': ' + message)
 	} catch(e) {}
 		if (cws.readyState == WebSocket.OPEN) cws.send(message);
 	});

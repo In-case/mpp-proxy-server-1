@@ -1,6 +1,6 @@
 var WebSocket = require('ws');
 var wss = new WebSocket.Server({
-	port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080
+	port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8081
 });
 var wss1 = new WebSocket.Server({
 	port: process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 8080

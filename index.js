@@ -16,7 +16,6 @@ wss.on('connection', function (cws, req){
 	cws.on('message', function(message){
 		if (tws.readyState == WebSocket.OPEN) tws.send(message);
 		else if (messageBuffer) messageBuffer.push(message);
-		console.log(message);
 	});
 	cws.on('close', function(){
 		tws.close();

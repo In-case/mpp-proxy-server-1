@@ -5,8 +5,8 @@ var wss = new WebSocket.Server({
 
 wss.on('connection', function (cws, req){
 	console.log(`New connection from ${req.connection.remoteAddress}`);
-	var tws = new WebSocket("wss://ts.terrium.net:8443", {
-		origin:"https://mpp.terrium.net/"
+	var tws = new WebSocket("wss://www.multiplayerpiano.com:443", {
+		origin:"https://www.multiplayerpiano.com/"
 	});
 	var messageBuffer = [];
 	tws.on('open', function(){

@@ -6,7 +6,7 @@ var wss = new WebSocket.Server({
 wss.on('connection', function (cws, req){
 	console.log(`New connection from ${req.connection.remoteAddress}`);
 	var tws = new WebSocket("wss://www.multiplayerpiano.com:443", {
-		origin:"https://www.multiplayerpiano.com/"
+		origin:"https://multiplayerpiano.com/"
 	});
 	var messageBuffer = [];
 	tws.on('open', function(){
